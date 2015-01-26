@@ -16,4 +16,15 @@ class CaseTest extends \PHPUnit_Framework_TestCase
         $model = \Mage::getModel('psr0autoloader/Observer');
         $this->assertTrue(!!$model);
     }
+
+    public function testGetNamespacedAliasedModel()
+    {
+        try{
+            $model = \Mage::getModel('Cotya_Autoloader_Model_Manager');
+        }catch(\Exception $e){
+            $this->fail($e->getMessage());
+        }
+        $this->assertTrue(!!$model);
+        $this->assertInstanceOf('Cotya\Autoloader\Model\Manager', $model);
+    }
 }
