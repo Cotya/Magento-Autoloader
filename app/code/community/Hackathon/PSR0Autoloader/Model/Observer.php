@@ -50,7 +50,7 @@ class Hackathon_PSR0Autoloader_Model_Observer extends Mage_Core_Model_Observer {
 			require_once $composerVendorPath . '/autoload.php';
 		}
         if ($this->shouldDisableBaseAutoloader()) {
-            spl_autoload_unregister(array(Varien_Autoload::instance(), 'autoload'));
+			Mage::getSingleton('Cotya_Autoloader_Model_Manager')->disableMagentoBaseAutoloader();
         }
 		self::$shouldAdd = false;
 	}
