@@ -27,4 +27,14 @@ class CaseTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(!!$model);
         $this->assertInstanceOf('Cotya\Autoloader\Model\Manager', $model);
     }
+
+    /**
+     */
+    public function testDisableBaseAutoloader()
+    {
+        $autoloadManager = \Mage::getModel('Cotya_Autoloader_Model_Manager');
+        $autoloadManager->disableMagentoBaseAutoloader();
+        $model = \Mage::getModel('moneybookers/Acc');
+        $this->assertFalse(!!$model);
+    }
 }
